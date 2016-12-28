@@ -25,7 +25,12 @@ int main(int argc, const char * argv[]) {
     insert(1,test);
     insert(2,test);
     insert(3,test);
-    insert(4,test);
+    printFull(test);
 
+    insert(4,test);
+    
+    
+    printUsed(test);
+    printFull(test);
     return 0;
 }

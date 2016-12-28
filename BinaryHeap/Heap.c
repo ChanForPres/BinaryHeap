@@ -78,8 +78,9 @@ void printUsed(node head) {
 
 void printFull(node head) {
     for (int i =1; i< MAXSIZE+1; i++) {
-        printf("%d\n", head[i].priority);
+        printf("%d", head[i].priority);
     }
+     printf("\n" );
 }
 
 
@@ -179,7 +180,7 @@ void insert(int data,node root) {
     }
 
     INUSE++;
-  //  printf("Curr inUse = %d", INUSE);
+   // printf("Curr inUse = %d\n", INUSE);
 
 }
 

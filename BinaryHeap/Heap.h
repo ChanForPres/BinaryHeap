@@ -23,20 +23,21 @@ struct Node {
 };
 typedef struct Node* node;
 
-void printTree(node head);
 void printUsed(node head);
 void printFull(node head);
-
 void insert(int data, node root);
-void deleteNode(int val);
-int extractMax();
 void siftUp(int data, node root);
 void siftDown(int data, node root);
-int getMax();
-int getMin();
-void changePriority(int val, int newP);
 node createHeap(int size);
 void swap(int val1,int val2, node root);
+
+
+void deleteNode(int val,node root);
+int getMax();
+int getMin();
+int extractMax();
+void changePriority(int val, int newP);
+
 
 // Create dynamic array, store ptr to root
 // Create new array twice as large when full, copy over data
