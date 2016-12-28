@@ -22,11 +22,10 @@ int main(int argc, const char * argv[]) {
     
     node test = createHeap(3);
     // Test insert 1,2,3
-    insert(1);
-    insert(2);
-    insert(3);
-    insert(4);
-  //  printTree(test);
-    
-       return 0;
+    insert(1,test);
+    insert(2,test);
+    insert(3,test);
+    insert(4,test);
+
+    return 0;
 }
