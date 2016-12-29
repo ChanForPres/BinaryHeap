@@ -127,7 +127,7 @@ void siftDown (int spot,node root) {
     
 }
 
-void insert(int data,node root) {
+node insert(int data,node root) {
     
     // Check if data is legal
     
@@ -162,7 +162,7 @@ void insert(int data,node root) {
 
        //     printf("%d", temp[i].priority);
         }
-        printFull(temp);
+    //    printFull(temp);
 
         free(root);
         root = temp;
@@ -175,13 +175,13 @@ void insert(int data,node root) {
         // add new element
         root[INUSE+1].priority = data;
         siftUp(INUSE+1,root);
-    printFull(root);
 
     }
 
     INUSE++;
    // printf("Curr inUse = %d\n", INUSE);
-
+   // printFull(root);
+    return root;
 }
 
 

@@ -25,7 +25,8 @@ typedef struct Node* node;
 
 void printUsed(node head);
 void printFull(node head);
-void insert(int data, node root);
+// Changed insert to return arr
+node insert(int data, node root);
 void siftUp(int data, node root);
 void siftDown(int data, node root);
 node createHeap(int size);
