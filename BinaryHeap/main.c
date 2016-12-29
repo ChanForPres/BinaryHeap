@@ -29,8 +29,11 @@ int main(int argc, const char * argv[]) {
 
    test= insert(4,test);
     
-    
-    printUsed(test);
     printFull(test);
+    
+   
+    printf("%d", getMin(test, test[1].priority, 1));
+    
+    
     return 0;
 }

@@ -111,8 +111,9 @@ void siftDown (int spot,node root) {
     int Rchild = (2*spot) + 1;
     
     // Check if node is leaf
-    if (Lchild> MAXSIZE && Rchild > MAXSIZE) {
+    if (Lchild> INUSE && Rchild > INUSE) {
         return; // no way to sift down further
+        
     }
     else if ((root[spot].priority >= root[Lchild].priority)&&(root[spot].priority >= root[Rchild].priority)) {
         return; // Node in proper order
@@ -184,8 +185,95 @@ node insert(int data,node root) {
     return root;
 }
 
+void deleteNode(int index,node root) {
+    // First check node dne
+    if (INUSE<index) {
+        printf("Deletion Failure: node dne");
+        return;
+    }
+    
+    // Swap w/ right most leaf
+    swap( INUSE, index, root);
+
+    // delete right most node
+    root[INUSE].priority = -1;
+   
+    printFull(root);
+    
+    // Sift down
+    siftDown(index,  root);
+    printFull(root);
+
+    // Sift up
+    siftUp(index,  root);
+    printFull(root);
+
+    INUSE--;
+}
+
+void changePriority(int index, int newP, node root){
+    // Check if valid priority
+    if (newP < 1) {
+        printf("changePriority failed: cannot have priority < 1" );
+        return;
+    }
+    
+    
+    // Change priority to newP
+    root[index].priority  = newP;
+    printFull(root);
+    
+    // siftUp
+    siftUp(index, root);
+    printFull(root);
+
+    
+    // siftDown
+    siftDown(index, root);
+
+    
+}
+
+int getMax(node root) {
+    
+    return root[1].priority;
+    
+}
+
+int getMin(node root, int min,int index) {
+    //compare all leaves
+    // recursively cycle through Lchild,Rchild, keep track of min
+    int Lchild = 2*index;
+    int Rchild = (2*index) + 1;
+    
+    if (Lchild> INUSE && Rchild > INUSE) {
+        return min; // no way to sift down further
+        
+    }
+    
+    if (min > root[index].priority) {
+        // Update min
+        min = root[index].priority;
+         printf("%d", min);
+        
+    }
+    // While next child exists, recurse through
+    
+    getMin(root, min,Lchild ); //  Lchild ~ 2*n
+    getMin(root, min,Rchild ); //  Rchild ~ 2*n + 1
+
+    
+    return min;
+}
 
 
+
+/*
+ FUNCTIONS TO IMPLEMENT : 
+ 
+
+int extractMax();
+*/
 
 
 

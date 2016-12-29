@@ -34,10 +34,10 @@ void swap(int val1,int val2, node root);
 
 
 void deleteNode(int val,node root);
-int getMax();
-int getMin();
+int getMax(node root);
+int getMin(node root,int min,int index);
 int extractMax();
-void changePriority(int val, int newP);
+void changePriority(int val, int newP,node root);
 
 
 // Create dynamic array, store ptr to root
