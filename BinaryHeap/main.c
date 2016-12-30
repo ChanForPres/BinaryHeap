@@ -31,9 +31,8 @@ int main(int argc, const char * argv[]) {
     
     printFull(test);
     
-   
-    printf("%d", getMin(test, test[1].priority, 1));
-    
-    
+    extractMax(test);
+    printFull(test);
+
     return 0;
 }

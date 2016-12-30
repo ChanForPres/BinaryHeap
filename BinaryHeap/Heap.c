@@ -246,35 +246,45 @@ int getMin(node root, int min,int index) {
     int Lchild = 2*index;
     int Rchild = (2*index) + 1;
     
+
+    if (min > root[index].priority && root[index].priority > 0) {
+        // Update min
+        min = root[index].priority;
+        //  printf("%d", min);
+        
+    }
+    
     if (Lchild> INUSE && Rchild > INUSE) {
         return min; // no way to sift down further
         
     }
     
-    if (min > root[index].priority) {
-        // Update min
-        min = root[index].priority;
-         printf("%d", min);
-        
-    }
+   
     // While next child exists, recurse through
     
-    getMin(root, min,Lchild ); //  Lchild ~ 2*n
-    getMin(root, min,Rchild ); //  Rchild ~ 2*n + 1
+   min= getMin(root, min,Lchild ); //  Lchild ~ 2*n
+   min= getMin(root, min,Rchild ); //  Rchild ~ 2*n + 1
 
     
     return min;
 }
 
 
-
-/*
- FUNCTIONS TO IMPLEMENT : 
- 
-
-int extractMax();
-*/
-
+int extractMax(node root) {
+    
+    
+    int max = root[1].priority;
+    
+    // Swap root w/ last leaf
+    swap(1, INUSE, root);
+    
+    // Delete root
+    deleteNode(INUSE, root);
+    // Siftdown leaf
+    siftDown(1, root);
+    
+    return max;
+}
 
 
 

@@ -36,7 +36,7 @@ void swap(int val1,int val2, node root);
 void deleteNode(int val,node root);
 int getMax(node root);
 int getMin(node root,int min,int index);
-int extractMax();
+int extractMax(node root);
 void changePriority(int val, int newP,node root);
 
 
