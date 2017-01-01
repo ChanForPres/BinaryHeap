@@ -10,29 +10,43 @@
 #include "Heap.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
     
-    int maxSize;
+  //  int maxSize;
   //  scanf("%d",&maxSize);
    // node H = createHeap(maxSize); // Pt to dyn alloc arr
     
-   // printTree();
+   
     
-    // Test insert, siftUp,siftDown
+//    node test = createHeap(3);
+//    // Test insert 1,2,3
+//    insert(1,test);
+//    insert(2,test);
+//    insert(3,test);
+// //   printFull(test);
+//
+//   test= insert(4,test);
+//    
+//    printFull(test);
+//    
+//    // Build heap
+//    int arr[] = {1,2,3,4};
+//    node test2 = buildHeap(arr, 4);
+//    printFull(test2);
     
-    node test = createHeap(3);
-    // Test insert 1,2,3
-    insert(1,test);
-    insert(2,test);
-    insert(3,test);
- //   printFull(test);
+    // Test BuildHeap
+    int intArr[] = {3,4,5,2,1};
+    int arrLength = sizeof(intArr) / sizeof(intArr[0]);
+  
 
-   test= insert(4,test);
     
-    printFull(test);
-    
-    extractMax(test);
-    printFull(test);
+     heapSort(intArr, arrLength);
+  
 
+    for(int i =0; i< 5; i++) {
+         printf("%d\t", intArr[i]);
+    }
+    
+    
+    // Should be 1,2,3,4,5
     return 0;
 }

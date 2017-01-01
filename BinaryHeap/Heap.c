@@ -1,4 +1,4 @@
-//
+    //
 //  Heap.c
 //  BinaryHeap
 //
@@ -13,23 +13,12 @@
 #include <math.h>
 
 // Define globals in .c file
- int INUSE = 0;
- int TREEHEIGHT = 0;
- int MAXSIZE = 0;
+  int INUSE = 0,
+TREEHEIGHT = 0,
+   MAXSIZE = 0,
+    allocInt = 0,
+    allocNode = 0;
 
-
-//struct Node* root = NULL;
-
-/*
-void insert(int data);
-void deleteNode(int val);
-int extractMax();
-void siftUp(int data);
-void siftDown(int data);
-int getMax();
-int getMin();
-void changePriority(int val, int newP);
-*/
 
 node createHeap(int maxSize) {
     struct Node* root = NULL;
@@ -93,7 +82,7 @@ void printFull(node head) {
  siftup(parent)
  */
 
-void siftUp (int spot,node root) {
+ void siftUp (int spot,node root) {
     
     int parent = floor(spot/2);
     
@@ -128,7 +117,7 @@ void siftDown (int spot,node root) {
     
 }
 
-node insert(int data,node root) {
+ node insert(int data,node root) {
     
     // Check if data is legal
     
@@ -159,20 +148,14 @@ node insert(int data,node root) {
         // copy over elements
         for (int i =1; i< INUSE+1; i++) {
             temp[i].priority = root[i].priority;
-     //       printf("%d", root[i].priority);
-
-       //     printf("%d", temp[i].priority);
+    
         }
-    //    printFull(temp);
 
         free(root);
         root = temp;
        
 
-     //   printFull(temp);
-
-  //      printFull(root);
-        
+  
         // add new element
         root[INUSE+1].priority = data;
         siftUp(INUSE+1,root);
@@ -180,6 +163,7 @@ node insert(int data,node root) {
     }
 
     INUSE++;
+    
    // printf("Curr inUse = %d\n", INUSE);
    // printFull(root);
     return root;
@@ -198,15 +182,15 @@ void deleteNode(int index,node root) {
     // delete right most node
     root[INUSE].priority = -1;
    
-    printFull(root);
+  //  printFull(root);
     
     // Sift down
     siftDown(index,  root);
-    printFull(root);
+   // printFull(root);
 
     // Sift up
     siftUp(index,  root);
-    printFull(root);
+    //printFull(root);
 
     INUSE--;
 }
@@ -287,7 +271,62 @@ int extractMax(node root) {
 }
 
 
+// Returns sorted arr of size INPUT
+void heapSort( int* tosort,int size) {
+    // Create empty priorityQ unsorted array size & insert elements in Q
 
+    
+    node temp = buildHeap(tosort, size);
+    // Heap doesn't build right, INUSE, MAXSIZE are 0
 
+    
+    
+        for (int i = size-1; i >= 0;i--) {
+    
+            tosort[i] = extractMax(temp);
+        }
 
+ 
+
+    freeNodearr(temp);
+
+    
+}
+
+// Pass in size of array
+node buildHeap(int* data, int size) {
+  
+    
+    // Given unsorted arr, insert into priority queue
+    node temp = createHeap(size);
+    
+    for (int i = 0; i < size; i++) {
+        // Problems w/ insert: MAXSIZE,INUSE starts at data[1]
+        insert(data[i], temp);
+    
+    }
+    
+    // return priorityQ
+    return temp;
+    
+}
+
+void freeIarr(int* arr) {
+    if (arr != NULL) {
+        free(arr);
+    }
+    else {
+        printf("Unable to free int* - NULL ptr");
+    }
+}
+
+void freeNodearr(node root) {
+    if (root != NULL) {
+        free(root);
+    }
+    else {
+        printf("Unable to free node* - NULL ptr");
+
+    }
+}
 
