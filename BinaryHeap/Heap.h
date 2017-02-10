@@ -10,7 +10,7 @@
 #define Heap_h
 
 #include <stdio.h>
-
+#include <stdbool.h>
 
 
 #define ELEMCOUNT(x) (sizeof(x) / sizeof((x)[0]))
@@ -19,9 +19,8 @@
 struct Node {
     
     int priority;
-    int inuse ;
-    int treeheight ;
-    int maxsize ;
+    bool inuse ;
+    int data;
 };
 typedef struct Node* node;
 

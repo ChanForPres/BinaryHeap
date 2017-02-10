@@ -40,6 +40,8 @@ node createHeap(int maxSize) {
     
     for (int i = 1; i< maxSize+1; i++) {
         root[i].priority = -1;
+        root[i].data = -1;
+        root[i].inuse = false;
        // printf("%d ",root[i].val);
 
     }
@@ -219,6 +221,7 @@ void changePriority(int index, int newP, node root){
 }
 
 int getMax(node root) {
+    
     
     return root[1].priority;
     
